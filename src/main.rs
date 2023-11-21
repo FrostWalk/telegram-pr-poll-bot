@@ -1,3 +1,6 @@
+use config::load;
+
+mod config;
 fn main() {
-    println!("Hello, world!");
+    load("config.toml");
 }
