@@ -15,6 +15,12 @@ struct Telegram {
 #[derive(Clone)]
 struct Github {
     token: String,
+    organization: String,
+    repository: String,
+    elements_per_page: u8,
+    approve_label: String,
+    reject_label: String,
+    filter_label: String,
 }
 
 #[derive(Deserialize)]
@@ -35,7 +41,13 @@ impl Telegram {
 impl Github {
     fn new() -> Github {
         Github {
-            token: String::new()
+            token: String::new(),
+            organization: String::new(),
+            repository: String::new(),
+            elements_per_page: 0,
+            approve_label: String::new(),
+            reject_label: String::new(),
+            filter_label: String::new(),
         }
     }
 }
@@ -70,9 +82,21 @@ pub fn load(file_path: &str) {
 
     let _ = mem::replace(APP_CONFIG.lock().unwrap().deref_mut(), red);
 }
-pub fn get_github_token() -> String {
-    APP_CONFIG.lock().unwrap().deref().clone().github.token
-}
+
+
+pub fn get_github_token() -> String { APP_CONFIG.lock().unwrap().deref().clone().github.token }
+
+pub fn get_github_repository() -> String { APP_CONFIG.lock().unwrap().deref().clone().github.repository }
+
+pub fn get_github_organization() -> String { APP_CONFIG.lock().unwrap().deref().clone().github.organization }
+
+pub fn get_github_elements_per_page() -> u8 { APP_CONFIG.lock().unwrap().deref().clone().github.elements_per_page }
+
+pub fn get_github_approve_label() -> String { APP_CONFIG.lock().unwrap().deref().clone().github.approve_label }
+
+pub fn get_github_reject_label() -> String { APP_CONFIG.lock().unwrap().deref().clone().github.reject_label }
+
+pub fn get_github_filter_label() -> String { APP_CONFIG.lock().unwrap().deref().clone().github.filter_label }
 
 pub fn get_telegram_token() -> String {
     APP_CONFIG.lock().unwrap().deref().clone().telegram.token

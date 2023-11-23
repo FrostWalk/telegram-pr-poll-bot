@@ -14,3 +14,4 @@ toml = "0.8.8"
 serde = { version = "1.0.192", features = ["derive"] }
 lazy_static = "1.4.0"
 config = "0.13.3"
+octocrab = "0.32.0"

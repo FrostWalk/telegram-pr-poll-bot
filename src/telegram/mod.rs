@@ -1,7 +1,4 @@
 use teloxide::{prelude::*, utils::command::BotCommands};
-use teloxide::{
-    prelude::*,
-};
 
 #[derive(BotCommands, Clone)]
 #[command(rename_rule = "lowercase", description = "These commands are supported:")]
